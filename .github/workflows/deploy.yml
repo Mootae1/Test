@@ -17,14 +17,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16' # Ensure you are using Node.js version 16 or later
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
 
       - name: Build the project
         env:
-          NODE_OPTIONS: --openssl-legacy-provider # Add this environment variable
+          NODE_OPTIONS: --max-old-space-size=4096 # Increase memory limit
         run: npm run build
 
       - name: Deploy to GitHub Pages
